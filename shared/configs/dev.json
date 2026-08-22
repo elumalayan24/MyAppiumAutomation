@@ -1,0 +1,23 @@
+{
+  "appium": {
+    "host": "127.0.0.1",
+    "port": 4723,
+    "basePath": "/wd/hub"
+  },
+  "android": {
+    "deviceName": "emulator-5554",
+    "platformVersion": "14",
+    "automationName": "UiAutomator2",
+    "appPath": "",
+    "appPackage": "com.expandtesting.practice",
+    "appActivity": ".MainActivity",
+    "noReset": true,
+    "fullReset": false,
+    "autoGrantPermissions": true
+  },
+  "timeouts": {
+    "implicit": 10,
+    "explicit": 30,
+    "pageLoad": 60
+  }
+}

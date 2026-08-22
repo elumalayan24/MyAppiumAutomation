@@ -1,0 +1,45 @@
+# Java build
+target/
+*.class
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# Allure
+allure-results/
+allure-report/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+local.properties
+
+# Build artifacts
+build/
+
+# APKs (add specific APKs manually)
+shared/apps/*.apk
+
+# Gradle
+.gradle/
+
+# Maven
+*.lastUpdated
+
+# Node
+node_modules/
+package-lock.json

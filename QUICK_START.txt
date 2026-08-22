@@ -1,0 +1,49 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║          QUICK START - Appium Automation Ready to Run!               ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📱 App Configured: com.expandtesting.practice (installed on emulator)
+🤖 Emulator: emulator-5554 (Android 17)
+⚙️  Appium: 3.6.0 with UiAutomator2 driver
+
+═══════════════════════════════════════════════════════════════════════
+
+🚀 3 STEPS TO RUN TESTS:
+
+  1️⃣  START EMULATOR (if not running)
+     → Open Android Studio > Device Manager > Start your emulator
+
+  2️⃣  START APPIUM SERVER (keep window open!)
+     Terminal 1:
+     PS> cd C:\Users\elumalayan\AndroidStudioProjects\MyAppiumAutomation
+     PS> .\start-appium.bat
+     
+     OR manually:
+     PS> appium --base-path /wd/hub
+
+  3️⃣  RUN TESTS
+     Terminal 2:
+     PS> cd C:\Users\elumalayan\AndroidStudioProjects\MyAppiumAutomation\frameworks\java
+     PS> mvn test
+
+═══════════════════════════════════════════════════════════════════════
+
+📊 VIEW REPORTS:
+   PS> cd frameworks\java
+   PS> mvn allure:serve
+
+═══════════════════════════════════════════════════════════════════════
+
+✅ WHAT'S BEEN SET UP:
+
+   ✓ Configuration files updated for your app
+   ✓ Sample test created: PracticeAppTest.java  
+   ✓ TestNG suite configured
+   ✓ Dependencies fixed (Appium 8.6.0 + Selenium 4.16.1)
+   ✓ Startup scripts created
+
+═══════════════════════════════════════════════════════════════════════
+
+📖 For detailed documentation, see: SETUP_GUIDE.md
+
+═══════════════════════════════════════════════════════════════════════

@@ -1,0 +1,6 @@
+rootProject.name = 'MyAppiumAutomation'
+
+include 'frameworks:java'
+
+// The actual test framework uses Maven in frameworks/java,
+// but this Gradle subproject lets IntelliJ show the green run button

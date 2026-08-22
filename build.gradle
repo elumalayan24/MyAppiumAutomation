@@ -1,0 +1,38 @@
+// Root build.gradle for MyAppiumAutomation
+// This is a minimal Gradle setup to satisfy Android Studio
+// The actual test automation framework uses Maven in frameworks/java
+
+plugins {
+    id 'base'
+}
+
+group = 'com.automation'
+version = '1.0.0'
+
+description = 'Production-grade Appium mobile test automation framework for Android (Java)'
+
+// Define tasks to delegate to Maven
+task test(type: Exec) {
+    group = 'verification'
+    description = 'Run Appium tests using Maven'
+    workingDir 'frameworks/java'
+    if (System.getProperty('os.name').toLowerCase().contains('windows')) {
+        commandLine 'cmd', '/c', 'mvn clean test'
+    } else {
+        commandLine 'mvn', 'clean', 'test'
+    }
+}
+
+// Override the base plugin's clean task to also clean Maven artifacts
+clean {
+    doLast {
+        exec {
+            workingDir 'frameworks/java'
+            if (System.getProperty('os.name').toLowerCase().contains('windows')) {
+                commandLine 'cmd', '/c', 'mvn clean'
+            } else {
+                commandLine 'mvn', 'clean'
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  appium:
+    image: appium/appium:v2.5.1
+    container_name: appium-server
+    ports:
+      - "4723:4723"
+    environment:
+      - APPIUM_LOG_LEVEL=info
+    volumes:
+      - ./shared/apps:/opt/apps
+    depends_on:
+      - android-emulator
+    command: >
+      appium --address 0.0.0.0 --port 4723
+      --base-path /wd/hub
+      --allow-insecure chromedriver_autodownload
+      --relaxed-security
+
+  android-emulator:
+    image: budtmo/docker-android:emulator_14.0
+    container_name: android-emulator
+    ports:
+      - "6080:6080"
+      - "5554:5554"
+      - "5555:5555"
+    environment:
+      - EMULATOR_DEVICE=Samsung Galaxy S10
+      - WEB_VNC=true
+      - APPIUM=false
+    devices:
+      - /dev/kvm

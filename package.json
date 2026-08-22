@@ -1,0 +1,10 @@
+{
+  "name": "appium-test-automation",
+  "version": "1.0.0",
+  "description": "Production-grade Appium mobile test automation framework for Android (Java)",
+  "private": true,
+  "scripts": {
+    "test:java": "cd frameworks/java && mvn clean test",
+    "clean": "cd frameworks/java && mvn clean"
+  }
+}

@@ -81,9 +81,7 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
           disable-animations: true
-          script: |
-            cd frameworks/java
-            mvn clean test -DTEST_ENV=dev
+          script: cd frameworks/java && mvn clean test -DTEST_ENV=dev
 
       - name: Upload Allure results
         if: always()

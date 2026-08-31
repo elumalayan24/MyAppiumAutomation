@@ -5,10 +5,10 @@
         <listener class-name="com.automation.listeners.TestListener"/>
     </listeners>
 
-    <test name="Practice App Tests">
-        <classes>
-            <class name="com.automation.tests.PracticeAppTest"/>
-        </classes>
+    <test name="All Tests">
+        <packages>
+            <package name="com.automation.tests"/>
+        </packages>
     </test>
 
 </suite>

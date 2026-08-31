@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.Duration;
 
 public class AppiumServerManager {
 
@@ -31,7 +32,8 @@ public class AppiumServerManager {
         AppiumServiceBuilder builder = new AppiumServiceBuilder()
                 .withIPAddress(appiumConfig.getHost())
                 .usingPort(appiumConfig.getPort())
-                .withArgument(GeneralServerFlag.LOG_LEVEL, "info");
+                .withArgument(GeneralServerFlag.LOG_LEVEL, "info")
+                .withTimeout(Duration.ofSeconds(60));
 
         String basePath = appiumConfig.getBasePath();
         if (basePath != null && !basePath.isEmpty()) {

@@ -18,6 +18,10 @@ public class PracticeAppPage extends BasePage {
     @AndroidFindBy(id = "com.expandtesting.practice:id/tv_country")
     private List<WebElement> countryNames;
 
+    @AndroidFindBy(id = "com.expandtesting.practice:id/btn_multi_touch")
+    private WebElement touchMe;
+
+
     @Step("Check if countries list is displayed")
     public boolean isCountriesListDisplayed() {
         return isDisplayed(countriesList);
@@ -51,5 +55,10 @@ public class PracticeAppPage extends BasePage {
     @Step("Click on first country")
     public void clickFirstCountry() {
         clickCountryAtIndex(0);
+    }
+
+    @Step("Click TouchMe")
+    public void clickTouchMe() {
+        click(touchMe);
     }
 }

@@ -44,6 +44,10 @@ public class DriverManager {
         }
     }
 
+
+
+
+
     public static boolean isDriverActive() {
         return driverThreadLocal.get() != null;
     }

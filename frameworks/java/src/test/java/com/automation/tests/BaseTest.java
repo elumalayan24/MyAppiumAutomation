@@ -2,13 +2,18 @@ package com.automation.tests;
 
 import com.automation.driver.AppiumServerManager;
 import com.automation.driver.DriverManager;
+import com.automation.listeners.TestListener;
+import com.automation.utils.ScreenshotUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 
+@Listeners(TestListener.class)
 public abstract class BaseTest {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
@@ -30,7 +35,11 @@ public abstract class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            logger.info("Test failed, capturing screenshot before driver cleanup");
+            ScreenshotUtils.capture("FAIL_" + result.getMethod().getMethodName());
+        }
         logger.info("Tearing down driver after test");
         DriverManager.quitDriver();
     }

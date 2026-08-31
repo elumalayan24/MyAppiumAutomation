@@ -29,10 +29,12 @@ public class TestListener implements ITestListener {
     public void onTestFailure(ITestResult result) {
         String testName = result.getMethod().getMethodName();
         logger.error("========== TEST FAILED: {} ==========", testName);
-        logger.error("Failure reason: {}", result.getThrowable().getMessage());
+        if (result.getThrowable() != null) {
+            logger.error("Failure reason: {}", result.getThrowable().getMessage(), result.getThrowable());
+        }
 
         try {
-            ScreenshotUtils.captureOnFailure();
+            ScreenshotUtils.capture("FAIL_" + testName);
         } catch (Exception e) {
             logger.error("Could not capture failure screenshot: {}", e.getMessage());
         }

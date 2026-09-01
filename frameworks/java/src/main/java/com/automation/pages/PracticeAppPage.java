@@ -1,5 +1,6 @@
 package com.automation.pages;
 
+import com.automation.utils.AppiumByLocators;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
@@ -60,5 +61,11 @@ public class PracticeAppPage extends BasePage {
     @Step("Click TouchMe")
     public void clickTouchMe() {
         click(touchMe);
+    }
+
+    @Step("Click on country by name '{countryName}'")
+    public void clickCountryByName(String countryName) {
+        click(AppiumByLocators.byText(countryName));
+        logger.info("Clicked on country: {}", countryName);
     }
 }

@@ -7,6 +7,7 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -52,6 +53,8 @@ public class DriverFactory {
         logger.info("Creating AndroidDriver with server URL: {}", serverUrl);
         logger.info("Device: {}, Platform: {}", androidConfig.getDeviceName(), androidConfig.getPlatformVersion());
 
+        verifyServerReachable(serverUrl);
+
         try {
             AndroidDriver driver = new AndroidDriver(new URL(serverUrl), options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeoutConfig.getImplicit()));
@@ -59,6 +62,32 @@ public class DriverFactory {
             return driver;
         } catch (MalformedURLException e) {
             throw new RuntimeException("Invalid Appium server URL: " + serverUrl, e);
+        }
+    }
+
+    private static void verifyServerReachable(String serverUrl) {
+        String statusUrl = serverUrl + "/status";
+        try {
+            HttpURLConnection connection = (HttpURLConnection) new URL(statusUrl).openConnection();
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
+            connection.setRequestMethod("GET");
+            int code = connection.getResponseCode();
+            connection.disconnect();
+            if (code != 200) {
+                throw new RuntimeException(
+                        "Appium server returned HTTP " + code + " at " + statusUrl
+                                + ". Check that the basePath in your environment config matches the --base-path "
+                                + "the server was started with.");
+            }
+            logger.info("Appium server is reachable at {}", statusUrl);
+        } catch (RuntimeException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new RuntimeException(
+                    "Cannot reach Appium server at " + statusUrl
+                            + ". Ensure the server is running and the host/port/basePath in your environment "
+                            + "config are correct.", e);
         }
     }
 }

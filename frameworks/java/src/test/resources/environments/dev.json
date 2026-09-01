@@ -2,7 +2,7 @@
   "appium": {
     "host": "127.0.0.1",
     "port": 4723,
-    "basePath": ""
+    "basePath": "/wd/hub"
   },
   "android": {
     "deviceName": "emulator-5554",

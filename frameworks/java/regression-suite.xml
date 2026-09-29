@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite" parallel="tests" thread-count="1">
+
+    <listeners>
+        <listener class-name="com.automation.listeners.TestListener"/>
+    </listeners>
+
+    <test name="Home Screen Regression">
+        <classes>
+            <class name="com.automation.tests.HomeScreenRegressionTest"/>
+        </classes>
+    </test>
+
+    <test name="Input Features Regression">
+        <classes>
+            <class name="com.automation.tests.InputFeaturesRegressionTest"/>
+        </classes>
+    </test>
+
+    <test name="List and Navigation Regression">
+        <classes>
+            <class name="com.automation.tests.ListAndNavigationRegressionTest"/>
+        </classes>
+    </test>
+
+    <test name="Gesture and Touch Regression">
+        <classes>
+            <class name="com.automation.tests.GestureAndTouchRegressionTest"/>
+        </classes>
+    </test>
+
+    <test name="Advanced Features Regression">
+        <classes>
+            <class name="com.automation.tests.AdvancedFeaturesRegressionTest"/>
+        </classes>
+    </test>
+
+</suite>

@@ -7,10 +7,9 @@ import org.openqa.selenium.WebElement;
 
 public class AlertDialogPage extends BasePage {
 
-    @AndroidFindBy(id = "com.expandtesting.practice:id/btn_show_alert")
+    @AndroidFindBy(id = "com.expandtesting.practice:id/btn_alert_dialog")
     private WebElement showAlertButton;
 
-    @AndroidFindBy(id = "android:id/alertTitle")
     private WebElement alertTitle;
 
     @AndroidFindBy(id = "android:id/message")
